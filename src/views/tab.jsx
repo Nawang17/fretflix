@@ -15,7 +15,7 @@ export default function Tab() {
     return (
       <Container
         size="md"
-        style={{ padding: 0, height: "100vh", overflow: "hidden" }}
+        style={{ padding: 0}}
       >
         <Mainheader />
         <Text align="center" mt={20} fw="bold" color="red">

@@ -4,7 +4,7 @@ FretFlix is a website where I share guitar tabs for the fingerstyle covers I pos
 
 ## Live Website
 
-🔗 [Visit FretFlix](https://fretflix.netlify.app/)
+🔗 [https://fretflix.netlify.app/](https://fretflix.netlify.app/)
 
 ## Features
 

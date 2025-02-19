@@ -15,7 +15,7 @@ export default function Tab() {
     return (
       <Container
         size="md"
-        style={{ padding: 0}}
+        style={{ padding: 0, height: "100vh", overflow: "hidden" }}
       >
         <Mainheader />
         <Text align="center" mt={20} fw="bold" color="red">
@@ -31,10 +31,7 @@ export default function Tab() {
   }
 
   return (
-    <Container
-      size="md"
-      style={{ padding: 0, height: "100vh", overflow: "hidden" }}
-    >
+    <Container size="md" style={{ padding: 0 }}>
       <Mainheader />
 
       {/* 🔹 Back Button */}
@@ -50,23 +47,30 @@ export default function Tab() {
       </NavLink>
 
       {/* 🔹 Song Details */}
+      {/* 🔹 Song Details */}
       <Flex style={{ margin: "10px 20px" }} direction="column" mt={20} gap={10}>
         <Text size="1.5rem">
           {tab.title} by <strong>{tab.artist}</strong>
         </Text>
         {tab.capo && <Text mt={5}>Capo: {tab.capo}</Text>}
-      </Flex>
 
-      {/* 🔹 Embedded YouTube Video */}
-      <div style={{ margin: "10px 20px" }}>
-        <iframe
-          width="100%"
-          height="315"
-          src={tab.youtube.replace("watch?v=", "embed/")}
-          allowFullScreen
-          title={`${tab.title} Cover`}
-        ></iframe>
-      </div>
+        {/* 🔹 YouTube Video Link */}
+        <Text mt={5}>
+          Watch the cover:{" "}
+          <a
+            href={tab.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "#007bff",
+              textDecoration: "underline",
+              fontWeight: "bold",
+            }}
+          >
+            Click here to watch on YouTube
+          </a>
+        </Text>
+      </Flex>
 
       {/* 🔹 Guitar Tab Display */}
       <pre

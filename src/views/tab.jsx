@@ -31,7 +31,10 @@ export default function Tab() {
   }
 
   return (
-    <Container size="md">
+    <Container
+      size="md"
+      style={{ padding: 0, height: "100vh", overflow: "hidden" }}
+    >
       <Mainheader />
 
       {/* 🔹 Back Button */}

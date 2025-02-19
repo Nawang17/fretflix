@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router"; // Corrected import path
+import { NavLink, useParams } from "react-router";
 import { Container, Flex, Button, Text, ActionIcon } from "@mantine/core";
 import { Mainheader } from "../components/mainheader";
 import { tabsData } from "../data";
@@ -47,12 +47,11 @@ export default function Tab() {
       </NavLink>
 
       {/* 🔹 Song Details */}
-      {/* 🔹 Song Details */}
       <Flex style={{ margin: "10px 20px" }} direction="column" mt={20} gap={10}>
-        <Text size="1.5rem">
+        <Text size="2rem">
           {tab.title} by <strong>{tab.artist}</strong>
         </Text>
-        {tab.capo && <Text mt={5}>Capo: {tab.capo}</Text>}
+        <Text mt={5}>Capo: {tab.capo}</Text>
 
         {/* 🔹 YouTube Video Link */}
         <Text mt={5}>
@@ -69,6 +68,9 @@ export default function Tab() {
           >
             Click here to watch on YouTube
           </a>
+        </Text>
+        <Text size="sm" c="dimmed">
+          This tab is wide. Please scroll horizontally to view the full tab.
         </Text>
       </Flex>
 

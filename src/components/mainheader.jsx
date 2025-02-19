@@ -50,6 +50,7 @@ export const Mainheader = () => {
         </NavLink>
 
         <Button
+          leftSection={<IconBrandYoutubeFilled color="red" size={22} />}
           onClick={() =>
             window.open("https://www.youtube.com/@nsherpaaa", "_blank")
           }
@@ -58,8 +59,7 @@ export const Mainheader = () => {
           color="gray"
           style={{ color: "black" }}
         >
-          <IconBrandYoutubeFilled color="red" size={22} />
-          {!isMobile && <Text ml={5}>Watch my covers</Text>}
+          {!isMobile ? "Watch my covers" : "YouTube"}
         </Button>
       </Flex>
     </Flex>

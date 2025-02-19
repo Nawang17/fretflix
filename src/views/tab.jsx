@@ -70,7 +70,7 @@ export default function Tab() {
           </a>
         </Text>
         <Text size="sm" c="dimmed">
-          This tab is wide. Please scroll horizontally to view the full tab.
+          Please scroll horizontally to view the full tab.
         </Text>
       </Flex>
 

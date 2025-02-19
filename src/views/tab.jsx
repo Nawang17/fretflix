@@ -13,7 +13,10 @@ export default function Tab() {
   // 🔹 If tab is not found, show an error message
   if (!tab) {
     return (
-      <Container size="md">
+      <Container
+        size="md"
+        style={{ padding: 0, height: "100vh", overflow: "hidden" }}
+      >
         <Mainheader />
         <Text align="center" mt={20} fw="bold" color="red">
           Tab Not Found

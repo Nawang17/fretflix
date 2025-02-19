@@ -14,7 +14,7 @@ FretFlix is a website where I share guitar tabs for the fingerstyle covers I pos
 
 ## Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript
+- **Frontend:** Reactjs
 - **Database:** Firebase
 
 Enjoy playing! 🎶

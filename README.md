@@ -2,6 +2,10 @@
 
 FretFlix is a website where I share guitar tabs for the fingerstyle covers I post on YouTube. I built this to make it easy for others to find and learn the arrangements I play.
 
+## Live Website
+
+🔗 [Visit FretFlix](https://fretflix.netlify.app/)
+
 ## Features
 
 - 🎼 Browse fingerstyle guitar tabs

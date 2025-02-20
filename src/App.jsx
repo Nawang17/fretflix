@@ -22,12 +22,14 @@ export default function App() {
   // State for search query
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Filter tabs based on search input (matches title or artist)
-  const filteredTabs = tabsData.filter((tab) =>
-    `${tab.title} ${tab.artist}`
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase())
-  );
+  // Filter and sort tabs based on search input (matches title or artist)
+  const filteredTabs = tabsData
+    .filter((tab) =>
+      `${tab.title} ${tab.artist}`
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => new Date(b.ytcoverdate) - new Date(a.ytcoverdate)); // Sort by date descending
 
   return (
     <Container

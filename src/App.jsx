@@ -7,6 +7,7 @@ import {
   Text,
   Card,
   Group,
+  Skeleton,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import {
@@ -15,24 +16,22 @@ import {
   IconSearch,
 } from "@tabler/icons-react";
 import { Mainheader } from "./components/mainheader";
-import { tabsData } from "./data";
 import { NavLink } from "react-router";
-import { logEvent } from "firebase/analytics";
-import { useAnalytics } from "../firebaseconfig";
+import { fetchTabs } from "./apiCalls/fetchtabsdata";
 
 export default function App() {
-  useEffect(() => {
-    if (useAnalytics) {
-      console.log("✅ Home page viewed!");
-      logEvent(useAnalytics, "Home page viewed");
-    } else {
-      console.error("❌ Firebase Analytics is NOT initialized!");
-    }
-  }, []);
-  // State for search query
   const [searchQuery, setSearchQuery] = useState("");
+  const [tabsData, setTabsData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Filter and sort tabs based on search input (matches title or artist)
+  useEffect(() => {
+    fetchTabs().then((data) => {
+      setTabsData(data);
+      setLoading(false);
+    });
+  }, []);
+
+  // Filter tabs based on search input
   const filteredTabs = tabsData
     .filter((tab) =>
       `${tab.title} ${tab.artist}`
@@ -88,8 +87,23 @@ export default function App() {
           msOverflowStyle: "none", // Hides scrollbar in IE & Edge
         }}
       >
-        {/* 🔹 Check if there are matching tabs */}
-        {filteredTabs.length > 0 ? (
+        {/* 🔹 Show Skeletons when loading */}
+        {loading ? (
+          <>
+            {new Array(2).fill(0).map((_, index) => (
+              <Container mx={0} px={0} mb={40} key={index}>
+                <Skeleton height={5} width="75px" radius="xl" />
+                <Skeleton height={5} mt={10} width="60px" radius="xl" />
+
+                <Flex mt={10} gap={10}>
+                  <Skeleton height={25} mt={5} width="110px" radius="sm" />
+                  <Skeleton height={25} mt={5} width="110px" radius="sm" />
+                </Flex>
+              </Container>
+            ))}
+          </>
+        ) : filteredTabs.length > 0 ? (
+          // 🔹 Show Tabs when loading is finished and there are results
           filteredTabs.map((tab, index) => (
             <Card
               key={index}
@@ -141,7 +155,7 @@ export default function App() {
             </Card>
           ))
         ) : (
-          // 🔹 Show message if no tabs match search
+          // 🔹 Show "No matching tabs found" only when loading is finished and no results
           <Text style={{ textAlign: "center", marginTop: 20 }}>
             No matching tabs found.
           </Text>

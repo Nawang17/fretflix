@@ -90,7 +90,7 @@ export default function App() {
         {/* 🔹 Show Skeletons when loading */}
         {loading ? (
           <>
-            {new Array(2).fill(0).map((_, index) => (
+            {new Array(4).fill(0).map((_, index) => (
               <Container mx={0} px={0} mb={40} key={index}>
                 <Skeleton height={5} width="75px" radius="xl" />
                 <Skeleton height={5} mt={10} width="60px" radius="xl" />
@@ -133,7 +133,9 @@ export default function App() {
                   leftSection={<IconBrandYoutube size={14} />}
                   color="orange"
                   variant="light"
-                  onClick={() => window.open(tab.youtube, "_blank")}
+                  onClick={() => {
+                    window.open(tab.youtube, "_blank");
+                  }}
                 >
                   Watch Cover
                 </Button>

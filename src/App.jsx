@@ -8,7 +8,7 @@ import {
   Card,
   Group,
 } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   IconBrandYoutube,
   IconPlaylist,
@@ -17,8 +17,18 @@ import {
 import { Mainheader } from "./components/mainheader";
 import { tabsData } from "./data";
 import { NavLink } from "react-router";
+import { logEvent } from "firebase/analytics";
+import { useAnalytics } from "../firebaseconfig";
 
 export default function App() {
+  useEffect(() => {
+    if (useAnalytics) {
+      console.log("✅ Home page viewed!");
+      logEvent(useAnalytics, "Home page viewed");
+    } else {
+      console.error("❌ Firebase Analytics is NOT initialized!");
+    }
+  }, []);
   // State for search query
   const [searchQuery, setSearchQuery] = useState("");
 

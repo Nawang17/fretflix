@@ -11,13 +11,19 @@ import { Mainheader } from "../components/mainheader";
 import { IconArrowLeft } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { fetchTabByTitle } from "../apiCalls/fetchtabsdata";
-
+import { logEvent } from "firebase/analytics";
+import { useAnalytics } from "../firebaseconfig";
 export default function Tab() {
   const { tabname } = useParams(); // Get tab name from URL
   const [tab, setTab] = useState(null);
   const [loading, setLoading] = useState(true); // ✅ New loading state
 
   useEffect(() => {
+    if (useAnalytics) {
+      logEvent(useAnalytics, "view_tab", { tabname }); // ✅ Log event for viewing tab with tabname
+    } else {
+      console.error("❌ Firebase Analytics is NOT initialized!");
+    }
     fetchTabByTitle(tabname).then((tab) => {
       setTab(tab);
       setLoading(false); // ✅ Stop loading after fetching
